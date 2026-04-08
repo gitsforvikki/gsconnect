@@ -1,17 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { Routes, Route } from "react-router-dom";
+import MainLayout from "./layout/MainLayout";
+import Home from "./components/Home";
+import Festivals from "./pages/Festivals";
+import Gallery from "./pages/Gallery";
+import Sports from "./pages/Sports";
+import Worships from "./pages/Worships";
+import { routes } from "./routes";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <h2>Welcome to Vite + React</h2>
-    </div>
-  )
+    <Routes>
+      <Route path="/" element={<MainLayout />}>
+        <Route index element={<Home />} />
+        <Route path={routes.FESTIVALS} element={<Festivals />} />
+        <Route path={routes.GALLERY} element={<Gallery />} />
+        <Route path={routes.SPORTS} element={<Sports />} />
+        <Route path={routes.WORSHIPS} element={<Worships />} />
+        {/* <Route path={routes.CONTACT} element={<Contact />} /> */}
+      </Route>
+    </Routes>
+  );
 }
 
-export default App
+export default App;
